@@ -6,7 +6,7 @@ import csv
 import os
 
 # Add a variable to load a file from a path.
-file_to_load = os.path.join("..", "Resources", "election_results.csv")
+file_to_load = os.path.join("Resources", "election_results.csv")
 # Add a variable to save the file to a path.
 file_to_save = os.path.join("analysis", "election_analysis.txt")
 
@@ -67,7 +67,7 @@ with open(file_to_load) as election_data:
         if county_name not in county_list:
 
             # 4b: Add the existing county to the list of counties.
-            county_name.append(county_list)
+            county_list.append(county_name)
 
             # 4c: Begin tracking the county's vote count.
             county_votes[county_name] = 0
@@ -98,8 +98,7 @@ with open(file_to_save, "w") as txt_file:
         vote_pct = vote_tally/total_votes
 
          # 6d: Print the county results to the terminal.
-        county_results = (
-        f"{county_name}: {vote_pct:.1f}% ({county_votes:,})\n")
+        county_results = (f"{county_name}: {vote_pct:.1f}% ({vote_tally:,})\n")
      # 6e: Save the county votes to a text file.
     txt_file.write(county_results)
      # 6f: Write an if statement to determine the winning county and get its vote count.
